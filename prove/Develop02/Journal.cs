@@ -34,11 +34,11 @@ public class Journal
         }
     }
 
+    //Saved as a scv file
     public void SaveToCsv(string filename)
     {
         using (StreamWriter writer = new StreamWriter(filename))
         {
-            //Saving as csv file
             writer.WriteLine("Date,Prompt,Response"); 
 
             foreach (Entry entry in _entries)
