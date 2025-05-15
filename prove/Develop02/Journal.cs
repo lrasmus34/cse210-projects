@@ -34,7 +34,7 @@ public class Journal
         }
     }
 
-    //Saved as a scv file
+    //Saved as a csv file
     public void SaveToCsv(string filename)
     {
         using (StreamWriter writer = new StreamWriter(filename))
