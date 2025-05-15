@@ -43,10 +43,10 @@ public class Journal
 
             foreach (Entry entry in _entries)
             {
-                string savePrompt = entry._Prompt.Replace("\"", "\"\"");
-                string saveResponse = entry._Response.Replace("\"", "\"\"");
+                string savePrompt = entry._prompt.Replace("\"", "\"\"");
+                string saveResponse = entry._response.Replace("\"", "\"\"");
             
-                writer.WriteLine($"\"{entry._Date}\",\"{savePrompt}\",\"{saveResponse}\"");
+                writer.WriteLine($"\"{entry._date}\",\"{savePrompt}\",\"{saveResponse}\"");
             }
         }
         Console.WriteLine("Journal saved as a CSV.");
@@ -62,13 +62,51 @@ public class Journal
 
         _entries.Clear();
         string[] lines = File.ReadAllLines(filename);
-        for (int i = 0; i < lines.Length; i += 4)
+
+        // Skips header
+        for (int i = 1; i < lines.Length; i++)
         {
-            string date = lines[i];
-            string prompt = lines[i + 1];
-            string response = lines[i + 2];
-            _entries.Add(new Entry(prompt, response) { _Date = date });
+            string line = lines[i];
+
+            // Splits by comma and handling quotes
+            string[] parts = ParseCsvLine(line);
+
+            if (parts.Length == 3)
+            {
+                string date = parts[0].Trim('\"');
+                string prompt = parts[1].Trim('\"');
+                string response = parts[2].Trim('\"');
+
+                _entries.Add(new Entry(prompt, response) { _date = date });
+            }
         }
+
         Console.WriteLine("Journal loaded.");
+    }
+    private string[] ParseCsvLine(string line)
+    {
+        List<string> result = new List<string>();
+        bool inQuotes = false;
+        string current = "";
+
+        foreach (char c in line)
+        {
+            if (c == '\"')
+            {
+                inQuotes = !inQuotes;
+            }
+            else if (c == ',' && !inQuotes)
+            {
+                result.Add(current);
+                current = "";
+            }
+            else
+            {
+                current += c;
+            }
+        }
+
+        result.Add(current);
+        return result.ToArray();
     }
 }
