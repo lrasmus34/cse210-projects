@@ -3,35 +3,35 @@ using System.Security.Cryptography.X509Certificates;
 
 public class Fraction
 {
-    private int _top;
-    private int _bottom;
+    private int _numerator;
+    private int _denominator;
 
     public Fraction()
     {
-        _top = 1;
-        _bottom = 1;
+        _numerator = 1;
+        _denominator = 1;
     }
 
     public Fraction(int wholeNumber)
     {
-        _top = wholeNumber;
-        _bottom = 1;
+        _numerator = wholeNumber;
+        _denominator = 1;
     }
 
-    public Fraction(int top, int bottom)
+    public Fraction(int numerator, int denominator)
     {
-        _top = top;
-        _bottom = bottom;
+        _numerator = numerator;
+        _denominator = denominator;
     }
 
     public string GetFractionString()
     {
-        string frac = $"{_top}/{_bottom}";
+        string frac = $"{_numerator}/{_denominator}";
         return frac;
     }
 
     public double GetDecimalValue()
     {
-        return (double)_top / (double)_bottom;
+        return (double)_numerator / (double)_denominator;
     }
 }
