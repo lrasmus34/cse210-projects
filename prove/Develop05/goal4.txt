@@ -1,0 +1,4 @@
+666
+SimpleGoal|Talk|Give a talk|100|True
+EternalGoal|Scripture study|study the scriptures for 10 mins a day|50
+ChecklistGoal|Temple|Attend the temple once a week for a month|4|4|500|4

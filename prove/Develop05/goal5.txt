@@ -1,0 +1,5 @@
+40
+SimpleGoal|d|dfg|10|True
+EternalGoal|f|cvb|20
+ChecklistGoal|a|qwe|30|2|100|1
+SimpleGoal|L|poi|1000|False

@@ -1,0 +1,4 @@
+0
+SimpleGoal|Talk|Give a talk|100|False
+EternalGoal|Scriptures|Study the scriputres once a day|50
+ChecklistGoal|Temple|Visiting the temple weekly|50|3|500|0
