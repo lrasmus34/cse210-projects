@@ -88,8 +88,8 @@ public class GoalManager
 
         while (!reader.EndOfStream)
         {
-            string[] parts = reader.ReadLine().Split('|');
-            string type = parts[0];
+            string[] parts = reader.ReadLine().Split('|');//Splits line into parts
+            string type = parts[0];//Tells what type of goal to create
             if (type == "SimpleGoal")
             {
                 string name = parts[1];
